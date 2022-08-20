@@ -1,0 +1,26 @@
+To add CORS plicy in django application
+1. install the library/depedency for CORS
+    pip install django-cors-headers
+
+2. add corsheaders in settings.py in INSTALLED_APPS
+    INSTALLED_APPS = [
+        '. . . . . . . . .',
+        'corsheaders',
+    ]
+
+3. we will have to provide CORS_ORIGIN_WHITELIST in settings.py
+   to allow the request from specified domains.
+    CORS_ORIGIN_WHITELIST = [
+        'http://127.0.0.1:3000',
+        'http://localhost:3000',
+    ]
+
+4. configure the bellow command in settings.py in MIDDLEWARE but make to sure 
+   to place the CorsMiddleware before the CommonMiddleware
+    'corsheaders.middleware.CorsMiddleware',    
+    MIDDLEWARE = [
+        ' . . . . . . . . . . ',
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        ' . . . . . . . . . .',
+    ]
